@@ -10,15 +10,17 @@ if (isset($_POST['username'])) {
         SELECT 
             `korisnicko_ime`, 
             `sifra` 
+           
         FROM `korisnik`
         WHERE `korisnicko_ime` = '$_POST[username]'
-                OR `sifra` = '$_POST[password]'";
+                OR `sifra` = '$_POST[password]'
+                ";
 
   $response = $conn->query($sql_query);
 
   if ($response->num_rows == 0) {
     $sql_query = "INSERT INTO `korisnik`
-            (`korisnicko_ime`, `sifra`)
+            (`korisnicko_ime`, `sifra`, )
             VALUES
             ('$_POST[username]', '$_POST[password]')";
 

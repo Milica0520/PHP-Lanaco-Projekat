@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2023 at 02:58 PM
+-- Generation Time: Feb 14, 2023 at 02:16 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -36,6 +36,14 @@ CREATE TABLE `artikal` (
   `PLU_KOD` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `artikal`
+--
+
+INSERT INTO `artikal` (`artikal_id`, `sifra`, `naziv`, `jedinica_mjere`, `barkod`, `PLU_KOD`) VALUES
+(1, '', '', '', '', ''),
+(2, '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,14 @@ CREATE TABLE `korisnik` (
   `sifra` varbinary(255) DEFAULT NULL,
   `rola_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `korisnik`
+--
+
+INSERT INTO `korisnik` (`korisnik_id`, `korisnicko_ime`, `sifra`, `rola_id`) VALUES
+(2, 'mica', 0x333231, NULL),
+(3, 'mica1', 0x313233, NULL);
 
 -- --------------------------------------------------------
 
@@ -180,13 +196,13 @@ ALTER TABLE `rola`
 -- AUTO_INCREMENT for table `artikal`
 --
 ALTER TABLE `artikal`
-  MODIFY `artikal_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `artikal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `korisnik`
 --
 ALTER TABLE `korisnik`
-  MODIFY `korisnik_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `korisnik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `lager`
@@ -217,35 +233,35 @@ ALTER TABLE `rola`
 --
 
 --
--- Constraints for table `artikal`
---
-ALTER TABLE `artikal`
-  ADD CONSTRAINT `artikal_ibfk_1` FOREIGN KEY (`artikal_id`) REFERENCES `lager` (`artikal_id`),
-  ADD CONSTRAINT `artikal_ibfk_2` FOREIGN KEY (`artikal_id`) REFERENCES `racun_stavka` (`artikal_id`);
-
---
 -- Constraints for table `korisnik`
 --
 ALTER TABLE `korisnik`
-  ADD CONSTRAINT `korisnik_ibfk_1` FOREIGN KEY (`korisnik_id`) REFERENCES `radnik` (`korisnik_id`);
+  ADD CONSTRAINT `korisnik_ibfk_1` FOREIGN KEY (`rola_id`) REFERENCES `rola` (`rola_id`);
+
+--
+-- Constraints for table `lager`
+--
+ALTER TABLE `lager`
+  ADD CONSTRAINT `lager_ibfk_1` FOREIGN KEY (`artikal_id`) REFERENCES `artikal` (`artikal_id`);
 
 --
 -- Constraints for table `racun`
 --
 ALTER TABLE `racun`
-  ADD CONSTRAINT `racun_ibfk_1` FOREIGN KEY (`racun_id`) REFERENCES `racun_stavka` (`racun_id`);
+  ADD CONSTRAINT `racun_ibfk_1` FOREIGN KEY (`racun_id`) REFERENCES `radnik` (`korisnik_id`);
+
+--
+-- Constraints for table `racun_stavka`
+--
+ALTER TABLE `racun_stavka`
+  ADD CONSTRAINT `racun_stavka_ibfk_1` FOREIGN KEY (`racun_id`) REFERENCES `racun` (`racun_id`),
+  ADD CONSTRAINT `racun_stavka_ibfk_2` FOREIGN KEY (`artikal_id`) REFERENCES `artikal` (`artikal_id`);
 
 --
 -- Constraints for table `radnik`
 --
 ALTER TABLE `radnik`
-  ADD CONSTRAINT `radnik_ibfk_1` FOREIGN KEY (`radnik_id`) REFERENCES `racun` (`radnik_id`);
-
---
--- Constraints for table `rola`
---
-ALTER TABLE `rola`
-  ADD CONSTRAINT `rola_ibfk_1` FOREIGN KEY (`rola_id`) REFERENCES `korisnik` (`rola_id`);
+  ADD CONSTRAINT `radnik_ibfk_1` FOREIGN KEY (`korisnik_id`) REFERENCES `korisnik` (`korisnik_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

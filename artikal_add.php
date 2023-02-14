@@ -40,10 +40,8 @@ include("connect.php");
         <input type="text" name="plu_code" value="" required>
       </div>
       <div class="button input-group">
-
         <input type="hidden" name="ID" value="" />
-        <input type="submit" name="add_article" class="btn" value="Dodaj novi artikl" />
-
+        <input type="submit" name="add_article" class="btn" value="Dodaj novi artikal" />
       </div>
 
 

@@ -1,39 +1,28 @@
+<?php include("includes/a_config.php");?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+	<?php include("includes/head-tag-contents.php");?>
+</head>
+<body>
 
-<?php
+<?php include("includes/design-top.php");?>
+<?php include("includes/navigation.php");?>
+
+<div class="container" id="main-content">
+  <?php
+
 include("connect.php");
 
-if (!isset($_COOKIE['username'])) {
+/*if (!isset($_COOKIE['username'])) {
   header("Location: login.php");
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artikal</title>
-  <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-  <?php
+}*/
 
   $rezultat = $conn->query("SELECT * FROM artikal");
   $rezultat->fetch_assoc();
   ?>
 
-  <div class="addNewItem">
-    <form action="artikal_add.php" method="post">
-      <div class="input-group">
-        <input type="submit" class="btn" name="add_article" value="Dodaj novi arikl">
-      </div>
-    </form>
-  </div>
+  
 
   <div class="table-container">
     <table class="table">
@@ -58,7 +47,7 @@ if (!isset($_COOKIE['username'])) {
           <td><?php echo $red['PLU_KOD']; ?></td>
           <td>
             <form name="edit" action="artikal_edit.php" method="post">
-              <input type="hidden" name="ID" value="<?php echo $red['arikal_id']; ?>" />
+              <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
               <input type="submit" name="editID" value="Edit" />
             </form>
           </td>
@@ -74,6 +63,15 @@ if (!isset($_COOKIE['username'])) {
       </tbody>
 
     </table>
+
+
+    <div class="addNewItem">
+   
+      <div class="input-group">
+       <a href="artikal_add.php">Dodaj novi artikal</a>
+      </div>
+   
+  </div>
     <?php
 
     if ($rezultat->num_rows == 0) {
@@ -82,8 +80,10 @@ if (!isset($_COOKIE['username'])) {
     $conn->close();
     ?>
 
+</div>
 
+<?php include("includes/footer.php");?>
 
 </body>
-
 </html>
+

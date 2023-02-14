@@ -22,7 +22,6 @@ include("connect.php");
       <div class="input-group">//SELECT OPADAJUCI MENI IZ BAZE
         <select class="form-select mb-3" name="artikal-option" aria-label="Default select example">
           <option selected value="user">User</option>
-
         </select>
       </div>
 
