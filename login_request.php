@@ -10,8 +10,12 @@ if (isset($_POST['username'])) {
 
   $response = $conn->query($sql_query);
 
-  if ($response->num_rows == 1 && $response->fetch_assoc()['password'] == $_POST['password']) {
-    setcookie('username', $_POST['username'], time() + 3600);
+  if ($response->num_rows == 1 ) {
+    $password_valid =password_verify($_POST['password'],$response->fetch_assoc()['password']) ;
+    if($password_valid ){
+      setcookie('username', $_POST['username'], time() + 3600);
+    }
+    
   }
 
 
