@@ -8,6 +8,7 @@
   <title>Log in</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+`
 
 <body>
   <header>
@@ -22,16 +23,10 @@
       <div class="input-group">
         <input type="password" name="password" required placeholder="Enter Password">
       </div>
-
       <div class="input-group">
         <input type="submit" name="login_btn" class="btn" value="Log in">
       </div>
-      <div class="input-group">
-        <select class="select-user" name="role">
-          <option selected value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+
       <div class="input-group">
         <p>Ako nemate nalog <a href="register.php">Registruj se!</a></p>
       </div>

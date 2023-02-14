@@ -79,3 +79,23 @@
 .div {
   margin-top: 15vh;
 }
+
+/*atikal.php*/
+.table {
+  margin-top: 20vh;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: small;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #23585a;
+  color: #ddd;
+}

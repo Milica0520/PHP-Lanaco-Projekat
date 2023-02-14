@@ -16,12 +16,8 @@
         <input type="text" name="username" required placeholder="Enter User Name">
       </div>
       <div class="input-group">
-        <input type="email" name="email" required placeholder="Enter Email">
-      </div>
-      <div class="input-group">
         <input type="password" name="password" required placeholder="Enter Password">
       </div>
-
       <div class="input-group">
         <input type="submit" name="login_btn" class="btn" value="REGISTER">
       </div>

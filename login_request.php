@@ -1,0 +1,25 @@
+<?php
+
+include("connect.php");
+
+if (isset($_POST['username'])) {
+
+  $sql_query = "SELECT * FROM `korisnik`
+                        WHERE `korisnicko_ime` = '$_POST[username]'";
+
+
+  $response = $conn->query($sql_query);
+
+  if ($response->num_rows == 1 && $response->fetch_assoc()['password'] == $_POST['password']) {
+    setcookie('username', $_POST['username'], time() + 3600);
+  }
+
+
+
+  $conn->close();
+
+}
+
+header("Location: artikal.php");
+
+?>
