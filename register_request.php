@@ -26,7 +26,7 @@ $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
     setcookie('username', $_POST['username'], time() + 3600);
   } else {
-    header("Location: login.php");
+    header("Location: index.php");
     $conn->close();
     die();
   }

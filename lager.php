@@ -1,29 +1,22 @@
+<?php include("includes/a_config.php");?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+	<?php include("includes/head-tag-contents.php");?>
+</head>
+<body>
 
+<?php include("includes/design-top.php");?>
+<?php include("includes/navigation.php");?>
+
+<div class="container" id="main-content">
 <?php
 
 include("connect.php");
 
 if (!isset($_COOKIE['username'])) {
-  header("Location: login.php");
+  header("Location: index.php");
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artikal</title>
-  <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-  <?php
-
   $rezultat = $conn->query("SELECT * FROM lager");
   $rezultat->fetch_assoc();
   ?>
@@ -75,13 +68,13 @@ if (!isset($_COOKIE['username'])) {
     <?php
 
     if ($rezultat->num_rows == 0) {
-      echo "NEMA ARTIKALA ZA PRIKAZ!"; //pogledaj na snimku da se ne ispisuje ni zaglavlje tabele
+      echo "NEMA LAGERA ZA PRIKAZ!"; //pogledaj na snimku da se ne ispisuje ni zaglavlje tabele
     }
     $conn->close();
     ?>
 
 
+<?php include("includes/footer.php");?>
 
 </body>
-
 </html>

@@ -4,12 +4,20 @@
 			$CURRENT_PAGE = "Artikal"; 
 			$PAGE_TITLE = "Artikal";
 			break;
-		case "/php-template/contact.php":
-			$CURRENT_PAGE = "Contact"; 
-			$PAGE_TITLE = "Contact Us";
+		case "/php-lanaco-projekat/about.php":
+			$CURRENT_PAGE = "Lager"; 
+			$PAGE_TITLE = "Lager";
 			break;
+			case "/php-lanaco-projekat/racun.php":
+				$CURRENT_PAGE = "Racun"; 
+				$PAGE_TITLE = "Racun";
+				break;
+				case "/php-lanaco-projekat/radnik.php":
+					$CURRENT_PAGE = "Radnik"; 
+					$PAGE_TITLE = "Radnik";
+					break;
 		default:
 			$CURRENT_PAGE = "Index";
-			$PAGE_TITLE = "Welcome to my homepage!";
+			$PAGE_TITLE = "Dobrodosli na stranicu!";
 	}
 ?>

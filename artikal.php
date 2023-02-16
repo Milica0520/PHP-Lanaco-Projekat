@@ -14,9 +14,9 @@
 
 include("connect.php");
 
-/*if (!isset($_COOKIE['username'])) {
-  header("Location: login.php");
-}*/
+if (!isset($_COOKIE['username'])) {
+  header("Location: index.php");
+}
 
   $rezultat = $conn->query("SELECT * FROM artikal");
   $rezultat->fetch_assoc();
