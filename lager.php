@@ -10,6 +10,7 @@
 <?php include("includes/navigation.php");?>
 
 <div class="container" id="main-content">
+<h2>Lager</h2>
 <?php
 
 include("connect.php");
@@ -21,13 +22,7 @@ if (!isset($_COOKIE['username'])) {
   $rezultat->fetch_assoc();
   ?>
 
-  <div class="addNewItem">
-    <form action="lager_add.php" method="post">
-      <div class="input-group">
-        <input type="submit" class="btn" name="logout" value="Dodaj novi lager">
-      </div>
-    </form>
-  </div>
+
 
   <div class="table-container">
     <table class="table">
@@ -43,19 +38,18 @@ if (!isset($_COOKIE['username'])) {
       while ($red = $rezultat->fetch_assoc()):
         ?>
         <tr>
-          <td><?php echo $red['naziv']; ?></td>
-          <td><?php echo $red['sifra']; ?></td>
-          <td><?php echo $red['opis']; ?></td>
-
+          <td><?php echo $red['artikal_id']; ?></td>
+          <td><?php echo $red['raspoloziva_kolicina']; ?></td>
+          <td><?php echo $red['lokacija']; ?></td>
           <td>
             <form name="edit" action="artikli_edit.php" method="post">
-              <input type="hidden" name="ID" value="<?php echo $red['ID_artikla']; ?>" />
+              <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
               <input type="submit" name="editID" value="Edit" />
             </form>
           </td>
           <td>
             <form name="delete" action="artikli_delete.php" method="post">
-              <input type="hidden" name="ID" value="<?php echo $red['ID_artikla']; ?>" />
+              <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
               <input type="submit" name="delete" value="Delete" />
             </form>
           </td>
@@ -65,6 +59,7 @@ if (!isset($_COOKIE['username'])) {
       </tbody>
 
     </table>
+   
     <?php
 
     if ($rezultat->num_rows == 0) {
@@ -72,7 +67,13 @@ if (!isset($_COOKIE['username'])) {
     }
     $conn->close();
     ?>
-
+ <div class="addNewItem">
+    <form action="lager_add.php" method="post">
+      <div class="input-group">
+        <input type="submit" class="btn" name="logout" value="Dodaj novi lager">
+      </div>
+    </form>
+  </div>
 
 <?php include("includes/footer.php");?>
 

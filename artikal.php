@@ -10,6 +10,7 @@
 <?php include("includes/navigation.php");?>
 
 <div class="container" id="main-content">
+<h2>Artikli</h2>
   <?php
 
 include("connect.php");
@@ -45,6 +46,7 @@ if (!isset($_COOKIE['username'])) {
           <td><?php echo $red['jedinica_mjere']; ?></td>
           <td><?php echo $red['barkod']; ?></td>
           <td><?php echo $red['PLU_KOD']; ?></td>
+         
           <td>
             <form name="edit" action="artikal_edit.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
@@ -57,6 +59,7 @@ if (!isset($_COOKIE['username'])) {
               <input type="submit" name="delete" value="Delete" />
             </form>
           </td>
+     
         </tr>
       <?php endwhile; ?>
       <tbody>
@@ -75,7 +78,7 @@ if (!isset($_COOKIE['username'])) {
     <?php
 
     if ($rezultat->num_rows == 0) {
-      echo "NEMA ARTIKALA ZA PRIKAZ!"; //pogledaj na snimku da se ne ispisuje ni zaglavlje tabele
+      echo "NEMA ARTIKALA ZA PRIKAZ!"; 
     }
     $conn->close();
     ?>

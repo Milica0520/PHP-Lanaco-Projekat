@@ -21,7 +21,7 @@ include("connect.php");
     <form id="form" action="lager_add.php" method="post">
       <div class="input-group">//SELECT OPADAJUCI MENI IZ BAZE
         <select class="form-select mb-3" name="artikal-option" aria-label="Default select example">
-          <option selected value="user">User</option>
+          <option selected value="user"></option>
         </select>
       </div>
 

@@ -12,6 +12,7 @@
   <?php include("includes/navigation.php"); ?>
 
   <div class="container" id="main-content">
+  <h2>Radnik</h2>
     <?php
 
     include("connect.php");
