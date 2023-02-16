@@ -5,7 +5,7 @@
 <head>
   <?php include("includes/head-tag-contents.php"); ?>
 </head>
-
+<link rel="stylesheet" href="css/btns.css">
 <body>
 
   <?php include("includes/design-top.php"); ?>

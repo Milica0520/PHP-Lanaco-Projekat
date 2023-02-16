@@ -1,0 +1,7 @@
+ime: Maja
+
+sifra: 123
+
+user: korisnik, rola 2
+------------------------
+

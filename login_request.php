@@ -15,7 +15,7 @@ if (isset($_POST['username'])) {
     $password_valid =password_verify($_POST['password'],$korisnik['sifra']) ;
     if($password_valid ){
       setcookie('username', $_POST['username'], time() + 3600);
-      setcookie('rola', $korisnik['rola_id'] , time() + 3600);
+      setcookie('rola', $korisnik['rola_id'], time() + 3600);
     }
     
   }

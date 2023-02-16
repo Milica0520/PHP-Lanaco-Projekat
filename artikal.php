@@ -8,7 +8,7 @@
 
 <?php include("includes/design-top.php");?>
 <?php include("includes/navigation.php");?>
-
+<link rel="stylesheet" href="css/btns.css">
 <div class="container" id="main-content">
 <h2>Artikli</h2>
   <?php
@@ -22,6 +22,7 @@ if (!isset($_COOKIE['username'])) {
   $rezultat = $conn->query("SELECT * FROM artikal");
   $rezultat->fetch_assoc();
   ?>
+
 
   
 
@@ -48,15 +49,18 @@ if (!isset($_COOKIE['username'])) {
           <td><?php echo $red['PLU_KOD']; ?></td>
          
           <td>
-            <form name="edit" action="artikal_edit.php" method="post">
-              <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
-              <input type="submit" name="editID" value="Edit" />
-            </form>
+           <?php if(isset($korisnik['rola_id']) == 1){
+            echo '<form name="edit" action="artikal_edit.php" method="post">';
+            echo '<input type="hidden" name="ID" value="<?php echo '.$red['artikal_id'].'" />';
+           echo '<input type="submit" name="editID" value="Edit" />';
+          echo '</form>';
+           }?>
+    
           </td>
           <td>
             <form name="delete" action="artikal_delete.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
-              <input type="submit" name="delete" value="Delete" />
+              <input type="submit" class="delete-btn" name="delete" value="Delete" />
             </form>
           </td>
      

@@ -8,7 +8,7 @@
 
 <?php include("includes/design-top.php");?>
 <?php include("includes/navigation.php");?>
-
+<link rel="stylesheet" href="css/btns.css">
 <div class="container" id="main-content">
 <h2>Lager</h2>
 <?php
@@ -63,7 +63,7 @@ if (!isset($_COOKIE['username'])) {
     <?php
 
     if ($rezultat->num_rows == 0) {
-      echo "NEMA LAGERA ZA PRIKAZ!"; //pogledaj na snimku da se ne ispisuje ni zaglavlje tabele
+      echo "NEMA LAGERA ZA PRIKAZ!"; 
     }
     $conn->close();
     ?>
