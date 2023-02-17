@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2023 at 02:16 PM
+-- Generation Time: Feb 17, 2023 at 03:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,7 +42,8 @@ CREATE TABLE `artikal` (
 
 INSERT INTO `artikal` (`artikal_id`, `sifra`, `naziv`, `jedinica_mjere`, `barkod`, `PLU_KOD`) VALUES
 (1, '', '', '', '', ''),
-(2, '', '', '', '', '');
+(5, '125', 'kaput', 'kom', '1597532684', '4444'),
+(6, '234', 'jakna', 'kom', '987456321', '3333');
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ CREATE TABLE `korisnik` (
   `korisnik_id` int(11) NOT NULL,
   `korisnicko_ime` varchar(50) DEFAULT NULL,
   `sifra` varbinary(255) DEFAULT NULL,
-  `rola_id` int(11) DEFAULT NULL
+  `rola_id` int(11) DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -62,8 +63,8 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`korisnik_id`, `korisnicko_ime`, `sifra`, `rola_id`) VALUES
-(2, 'mica', 0x333231, NULL),
-(3, 'mica1', 0x313233, NULL);
+(14, 'Maja', 0x243279243130242f7332343372694862527a7a694654393068646d4d2e57486564456c6b76696b4e585077573466735957685578344c4b4e684a7153, 2),
+(18, 'admin', 0x2432792431302467767771714a31544836316d484e42304c33676b6e75574652355775454d666854465630644939434d5758395a43544e5248623736, 1);
 
 -- --------------------------------------------------------
 
@@ -77,6 +78,14 @@ CREATE TABLE `lager` (
   `razpoloziva_kolicina` decimal(18,2) DEFAULT NULL,
   `lokacija` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `lager`
+--
+
+INSERT INTO `lager` (`lager_id`, `artikal_id`, `razpoloziva_kolicina`, `lokacija`) VALUES
+(1, 6, '10.00', 'BL'),
+(2, 5, '10.00', 'BL');
 
 -- --------------------------------------------------------
 
@@ -138,6 +147,14 @@ CREATE TABLE `rola` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
+-- Dumping data for table `rola`
+--
+
+INSERT INTO `rola` (`rola_id`, `naziv_role`) VALUES
+(1, 'admin'),
+(2, 'korisnik');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -196,19 +213,19 @@ ALTER TABLE `rola`
 -- AUTO_INCREMENT for table `artikal`
 --
 ALTER TABLE `artikal`
-  MODIFY `artikal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `artikal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `korisnik`
 --
 ALTER TABLE `korisnik`
-  MODIFY `korisnik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `korisnik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `lager`
 --
 ALTER TABLE `lager`
-  MODIFY `lager_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lager_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `racun`
@@ -220,13 +237,13 @@ ALTER TABLE `racun`
 -- AUTO_INCREMENT for table `radnik`
 --
 ALTER TABLE `radnik`
-  MODIFY `radnik_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `radnik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rola`
 --
 ALTER TABLE `rola`
-  MODIFY `rola_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rola_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
