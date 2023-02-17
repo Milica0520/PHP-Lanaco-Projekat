@@ -15,14 +15,44 @@ include("connect.php");
 </head>
 
 <body>
+<?php
+if (isset($_GET['artikal_id'])) {
+
+$item_id = $_GET['artikal_id'];
+
+$sql = "SELECT * FROM artikal WHERE artikal_id = $item_id ";
+if ($result = $conn->query($sql)) {
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_array()) {
+      // echo $row['artikal_id'];
+      $dbselected = $row['artikal_id'];
+    }
+    $result->free_result();
+  } else {
+    echo "Nesto nije u redu...";
+  }
+}
 
 
+
+}
+?>
   <div class="flex-container">
     <form id="form" action="lager_add.php" method="post">
-      <div class="input-group">//SELECT OPADAJUCI MENI IZ BAZE
-        <select class="form-select mb-3" name="artikal-option" aria-label="Default select example">
-          <option selected value="user"></option>
-        </select>
+    <!-- SELECT OPADAJUCI MENI IZ BAZE -->
+      <div class="input-group">
+      <?php echo "<select>";
+      foreach($options as $option){
+        if( $dbselected == $option){
+          echo "<option value='$option'>$option </option>";
+        }
+      }
+     echo "</select>" ;
+      
+      
+      
+      ?>
+        
       </div>
 
       <div class="input-group">
@@ -50,7 +80,6 @@ include("connect.php");
 <?php
 
 
-
 if (isset($_POST['add_lager'])) {
   $artikal_id = $_POST['artikal_id'];
   $avq = $_POST['avq'];
@@ -65,3 +94,6 @@ if (isset($_POST['add_lager'])) {
 
 $conn->close();
 ?>
+<!-- <select class="form-select" name="artikal-option" > -->
+          <!-- <option selected value="atikal_id"><?php $row['artikal_id']?></option> -->
+        <!-- </select> -->

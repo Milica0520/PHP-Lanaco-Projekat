@@ -49,11 +49,12 @@ if (!isset($_COOKIE['username'])) {
           <td><?php echo $red['PLU_KOD']; ?></td>
          
           <td>
-           <?php if(isset($korisnik['rola_id']) == 1){
-            echo '<form name="edit" action="artikal_edit.php" method="post">';
-            echo '<input type="hidden" name="ID" value="<?php echo '.$red['artikal_id'].'" />';
-           echo '<input type="submit" name="editID" value="Edit" />';
-          echo '</form>';
+           <?php if(isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1){?>
+            <form name="edit" action="artikal_edit.php" method="post">
+            <input type="hidden" name="ID" value="<?php echo $red['artikal_id'];?>"/>
+           <input type="submit" name="editID" value="Edit" />
+        </form>
+        <?php 
            }?>
     
           </td>
