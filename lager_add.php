@@ -15,44 +15,26 @@ include("connect.php");
 </head>
 
 <body>
-<?php
-if (isset($_GET['artikal_id'])) {
-
-$item_id = $_GET['artikal_id'];
-
-$sql = "SELECT * FROM artikal WHERE artikal_id = $item_id ";
-if ($result = $conn->query($sql)) {
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_array()) {
-      // echo $row['artikal_id'];
-      $dbselected = $row['artikal_id'];
-    }
-    $result->free_result();
-  } else {
-    echo "Nesto nije u redu...";
-  }
-}
 
 
-
-}
-?>
   <div class="flex-container">
     <form id="form" action="lager_add.php" method="post">
-    <!-- SELECT OPADAJUCI MENI IZ BAZE -->
-      <div class="input-group">
-      <?php echo "<select>";
-      foreach($options as $option){
-        if( $dbselected == $option){
-          echo "<option value='$option'>$option </option>";
-        }
-      }
-     echo "</select>" ;
-      
-      
-      
+      <!-- SELECT OPADAJUCI MENI IZ BAZE -->
+      <?php
+      $rezultat = $conn->query("SELECT * FROM artikal");
+      $rezultat->fetch_assoc();
       ?>
-        
+      <div class="input-group">
+        <label for="naziv_artikla">Odaberi artikal</label>
+        <select name="artikal">
+          <?php
+          while ($red = $rezultat->fetch_assoc()):
+            ?>
+            <option value="<?php echo $red['artikal_id']; ?>">
+              <?php echo $red['naziv']; ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
       </div>
 
       <div class="input-group">
@@ -61,13 +43,12 @@ if ($result = $conn->query($sql)) {
       </div>
       <div class="input-group">
         <label>Lokacija</label>
-        <input type="text" name="loc" value="" required>
+        <input type="text" name="location" value="" required>
       </div>
 
       <div class="button input-group">
         <input type="hidden" name="ID" value="" />
         <input type="submit" name="add_lager" class="btn" value="Dodaj novi Lager" />
-
       </div>
 
 
@@ -76,24 +57,18 @@ if ($result = $conn->query($sql)) {
 </body>
 
 </html>
-
 <?php
-
-
 if (isset($_POST['add_lager'])) {
-  $artikal_id = $_POST['artikal_id'];
+  $naziv_artikla = $_POST['artikal'];
   $avq = $_POST['avq'];
-  $location = $_POST['loc'];
+  $location = $_POST['location'];
 
 
-  $conn->query("INSERT INTO lager(artikal_id,avq, loc)
-    VALUES ('$artikal_id','$avq','$location')");
+  $conn->query("INSERT INTO lager (artikal_id,razpoloziva_kolicina, lokacija)
+    VALUES ('$naziv_artikla','$avq','$location')");
   header("location:lager.php");
 
 }
 
 $conn->close();
 ?>
-<!-- <select class="form-select" name="artikal-option" > -->
-          <!-- <option selected value="atikal_id"><?php $row['artikal_id']?></option> -->
-        <!-- </select> -->

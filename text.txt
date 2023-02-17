@@ -2,6 +2,13 @@ ime: Maja
 
 sifra: 123
 
-user: korisnik, rola 2
+rola : korisnik
 ------------------------
+ime: admin
+
+sifra: 123
+
+rola:admin
+
+
 

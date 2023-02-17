@@ -39,20 +39,21 @@ if (!isset($_COOKIE['username'])) {
         ?>
         <tr>
           <td><?php echo $red['artikal_id']; ?></td>
-          <td><?php echo $red['raspoloziva_kolicina']; ?></td>
+          <td><?php echo $red['razpoloziva_kolicina']; ?></td>
           <td><?php echo $red['lokacija']; ?></td>
           <td>
-            <form name="edit" action="artikli_edit.php" method="post">
+          <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
+            <form name="edit" action="lager_edit.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
               <input type="submit" name="editID" value="Edit" />
             </form>
-          </td>
-          <td>
-            <form name="delete" action="artikli_delete.php" method="post">
+            <form name="delete" action="lager_delete.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
               <input type="submit" name="delete" value="Delete" />
             </form>
           </td>
+          <?php
+              } ?>
         </tr>
       <?php endwhile; ?>
       <tbody>
