@@ -45,11 +45,11 @@ if (!isset($_COOKIE['username'])) {
           <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
             <form name="edit" action="lager_edit.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
-              <input type="submit" name="editID" value="Edit" />
+              <input type="submit"  class="edit-btn"  name="editID" value="Edit" />
             </form>
             <form name="delete" action="lager_delete.php" method="post">
               <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
-              <input type="submit" name="delete" value="Delete" />
+              <input type="submit"  class="delete-btn"  name="delete" value="Delete" />
             </form>
           </td>
           <?php
