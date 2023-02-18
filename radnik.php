@@ -80,7 +80,6 @@
                   <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
                   <input type="submit" class="edit-btn" name="editID" value="Edit" />
                 </form>
-             
                 <form name="delete" action="radnik_delete.php" method="post">
                   <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
                   <input type="submit" class="delete-btn" name="delete" value="Delete" />

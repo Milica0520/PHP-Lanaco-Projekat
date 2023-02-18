@@ -15,21 +15,6 @@ $jedinica = $red['jedinica_mjere'];
 $barkod = $red['barkod'];
 $plukod = $red['PLU_KOD'];
 
-
-
-/*$data_type = gettype($rezultat);
-echo $data_type;//object
-echo "<br>";
-$data_type = gettype($red);
-echo $data_type;//array
-echo "<br>";
-var_dump($red);
-echo "<br>";
-var_dump($red['naziv']);
-echo "<br>";
-var_dump($red['sifra']);*/
-
-
 if (isset($_POST['dodaj'])) {
     $naziv = $_POST['naziv'];
     $sifra = $_POST['sifra'];
