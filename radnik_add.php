@@ -48,7 +48,7 @@ include("connect.php");
         <input type="text" name="jmbg" value="" required>
       </div>
       <div class="input-group">
-        <label>Korisnik ID</label>
+        <label>Korisnik ID</label>//
         <input type="text" name="user_id" value="" required>
       </div>
       <div class="button input-group">

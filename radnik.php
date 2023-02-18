@@ -6,13 +6,14 @@
   <?php include("includes/head-tag-contents.php"); ?>
 </head>
 <link rel="stylesheet" href="css/btns.css">
+
 <body>
 
   <?php include("includes/design-top.php"); ?>
   <?php include("includes/navigation.php"); ?>
-
+  <link rel="stylesheet" href="css/btns.css">
   <div class="container" id="main-content">
-  <h2>Radnik</h2>
+    <h2>Radnik</h2>
     <?php
 
     include("connect.php");
@@ -21,7 +22,7 @@
       header("Location: index.php");
     }
 
-    $rezultat = $conn->query("SELECT * FROM radnik");
+    $rezultat = $conn->query("SELECT * FROM radnik LEFT JOIN korisnik ON radnik.korisnik_id = korisnik.korisnik_id");
     $rezultat->fetch_assoc();
     ?>
 
@@ -33,13 +34,16 @@
           <tr>
             <th>Ime</th>
             <th>Prezime</th>
-            <th>Broj Telefona</th>
+            <th>Broj Tel</th>
             <th>Adresa</th>
             <th>Grad</th>
             <th>Email</th>
             <th>JMBG</th>
             <th>Korisnik_id</th>
-            <th colspan="2">Akcije</th>
+            <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
+              <th colspan="2">Akcije</th>
+              <?php
+            } ?>
           </tr>
         </thead>
         <?php
@@ -68,20 +72,23 @@
               <?php echo $red['JMBG']; ?>
             </td>
             <td>
-              <?php echo $red['korisnik_id']; ?>
+              <?php echo $red['korisnicko_ime']; ?>
             </td>
-            <td>
-              <form name="edit" action="radnik_edit.php" method="post">
-                <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
-                <input type="submit" name="editID" value="Edit" />
-              </form>
-            </td>
-            <td>
-              <form name="delete" action="radnik_delete.php" method="post">
-                <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
-                <input type="submit" name="delete" value="Delete" />
-              </form>
-            </td>
+            <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
+              <td>
+                <form name="edit" action="radnik_edit.php" method="post">
+                  <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
+                  <input type="submit" class="edit-btn" name="editID" value="Edit" />
+                </form>
+              </td>
+              <td>
+                <form name="delete" action="radnik_delete.php" method="post">
+                  <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
+                  <input type="submit" class="delete-btn" name="delete" value="Delete" />
+                </form>
+              </td>
+              <?php
+            } ?>
           </tr>
         <?php endwhile; ?>
         <tbody>

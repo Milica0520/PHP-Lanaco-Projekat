@@ -2,22 +2,30 @@
 
 include("connect.php");
 ?>
-
+<?php include("includes/a_config.php"); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+<head>
+  <?php include("includes/head-tag-contents.php"); ?>
+</head>
+
+<body>
+  <?php include("includes/design-top.php"); ?>
+
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>add lager</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Add lager</title>
+  
 </head>
 
 <body>
 
 
-  <div class="flex-container">
+  <div class="form-container">
     <form id="form" action="lager_add.php" method="post">
       <!-- SELECT OPADAJUCI MENI IZ BAZE -->
       <?php
@@ -26,7 +34,7 @@ include("connect.php");
       ?>
       <div class="input-group">
         <label for="naziv_artikla">Odaberi artikal</label>
-        <select name="artikal">
+        <select class="input-group" name="artikal">
           <?php
           while ($red = $rezultat->fetch_assoc()):
             ?>
@@ -45,13 +53,10 @@ include("connect.php");
         <label>Lokacija</label>
         <input type="text" name="location" value="" required>
       </div>
-
       <div class="button input-group">
         <input type="hidden" name="ID" value="" />
         <input type="submit" name="add_lager" class="btn" value="Dodaj novi Lager" />
       </div>
-
-
     </form>
   </div>
 </body>
