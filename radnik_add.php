@@ -47,9 +47,21 @@ include("connect.php");
         <label>JMBG</label>
         <input type="text" name="jmbg" value="" required>
       </div>
+      <?php
+      $rezultat = $conn->query("SELECT * FROM korisnik");
+      $rezultat->fetch_assoc();
+      ?>
       <div class="input-group">
-        <label>Korisnik ID</label>//
-        <input type="text" name="user_id" value="" required>
+        <label for="user_id">Korisnik ID</label>
+        <select class="input-group" name="user_id">
+          <?php
+          while ($red = $rezultat->fetch_assoc()):
+            ?>
+            <option value="<?php echo $red['korisnik_id']; ?>">
+              <?php echo $red['korisnicko_ime']; ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
       </div>
       <div class="button input-group">
         <input type="hidden" name="ID" value="" />

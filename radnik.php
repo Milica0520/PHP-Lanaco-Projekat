@@ -39,7 +39,7 @@
             <th>Grad</th>
             <th>Email</th>
             <th>JMBG</th>
-            <th>Korisnik_id</th>
+            <th>Korisnik</th>
             <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
               <th colspan="2">Akcije</th>
               <?php
@@ -80,8 +80,7 @@
                   <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
                   <input type="submit" class="edit-btn" name="editID" value="Edit" />
                 </form>
-              </td>
-              <td>
+             
                 <form name="delete" action="radnik_delete.php" method="post">
                   <input type="hidden" name="ID" value="<?php echo $red['radnik_id']; ?>" />
                   <input type="submit" class="delete-btn" name="delete" value="Delete" />
