@@ -9,7 +9,7 @@
 <body>
 
     <?php include("includes/design-top.php"); ?>
-   
+    <?php include("includes/navigation.php"); ?>
     <link rel="stylesheet" href="css/btns.css">
     <div class="container" id="main-content">
         <h2>Azuriraj Lager</h2>

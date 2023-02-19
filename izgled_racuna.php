@@ -1,9 +1,11 @@
 <!-- ovdje ce se auto inkrenetovati racun id -->
-<?php include("includes/a_config.php"); ?>
+<?php include("includes/a_config.php");
+include("connect.php"); ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
     <?php include("includes/head-tag-contents.php"); ?>
 </head>
 
@@ -33,8 +35,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ( $listaStavki as $stavka):
-                    $ukupnacijena+= $stavka["price"] * $stavka["quantity"];
+                    <?php foreach ($listaStavki as $stavka):
+                        $ukupnacijena += $stavka["price"] * $stavka["quantity"];
                         ?>
                         <tr>
                             <td>
@@ -53,16 +55,37 @@
 
         </div>
 
-      <p>Radnik kreirao:  <?php echo $_COOKIE['username'] ;?></p>
 
-      <p>Datum izdavanja racuna: <?php date("d F Y") ;?></p>
 
-      <p>Ukupan iznos: <?php echo $ukupnacijena ;?></p>
+        <p>Radnik kreirao:
+            <?php 
+            $_COOKIE['username']; ?>
+        </p>
 
-      <p>Iznos PDV: <?php echo ($ukupnacijena * 0.17) ;?></p>
+        <p>Datum izdavanja racuna:
+            <?php echo date("d F Y"); ?>
+        </p>
 
-      <p>Iznos bez PDV: <?php echo $ukupnacijena - ($ukupnacijena * 0.17) ;?></p>
+        <p>Broj racuna:
+        </p>
 
-    <!-- poslati u bazu -->
+        <p>Ukupan iznos:
+            <?php echo $ukupnacijena; ?>
+        </p>
+
+        <p>Iznos PDV:
+            <?php echo ($ukupnacijena * 0.17); ?>
+        </p>
+
+        <p>Iznos bez PDV:
+            <?php echo $ukupnacijena - ($ukupnacijena * 0.17); ?>
+        </p>
 
     </div>
+
+
+
+
+    <?php
+    $conn->close();
+    ?>

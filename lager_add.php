@@ -9,7 +9,7 @@ include("connect.php");
 <head>
   <?php include("includes/head-tag-contents.php"); ?>
 </head>
-
+<?php include("includes/navigation.php"); ?>
 <?php include("includes/design-top.php"); ?>
 <body>
   
