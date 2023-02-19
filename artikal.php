@@ -25,9 +25,6 @@
     $rezultat->fetch_assoc();
     ?>
 
-
-
-
     <div class="table-container">
       <table class="table">
         <thead>
@@ -39,7 +36,7 @@
             <th>PLU_KOD</th>
             <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
               <th colspan="2">Akcije</th>
-            <?php
+              <?php
             } ?>
           </tr>
         </thead>
@@ -67,14 +64,14 @@
               <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
                 <form name="edit" action="artikal_edit.php" method="post">
                   <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
-                  <input type="submit" class="edit-btn"  name="editID" value="Edit" />
+                  <input type="submit" class="edit-btn" name="editID" value="Edit" />
                 </form>
                 <form name="delete" action="artikal_delete.php" method="post">
                   <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
                   <input type="submit" class="delete-btn" name="delete" value="Delete" />
                 </form>
               </td>
-            <?php
+              <?php
               } ?>
           </tr>
 
@@ -101,8 +98,8 @@
       ?>
 
     </div>
-
-    <?php include("includes/footer.php"); ?>
+  </div>
+  <?php include("includes/footer.php"); ?>
 
 </body>
 

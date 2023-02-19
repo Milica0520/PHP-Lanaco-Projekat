@@ -2,50 +2,51 @@
 
 include("connect.php");
 ?>
-
+<?php include("includes/a_config.php"); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add article</title>
-  <link rel="stylesheet" href="style.css">
+  <?php include("includes/head-tag-contents.php"); ?>
 </head>
 
 <body>
 
+  <?php include("includes/design-top.php"); ?>
+ 
+  <link rel="stylesheet" href="css/btns.css">
 
-  <div class="flex-container">
-    <form id="form" action="artikal_add.php" method="post">
-      <div class="input-group">
-        <label>Sifra</label>
-        <input type="text" name="product_code" value="" required>
-      </div>
-      <div class="input-group">
-        <label>Naziv</label>
-        <input type="text" name="product_name" value="" required>
-      </div>
-      <div class="input-group">
-        <label>JedinicaMjere</label>
-        <input type="text" name="quantity_unit" value="" required>
-      </div>
-      <div class="input-group">
-        <label>Barkod</label>
-        <input type="text" name="bar_code" value="" required>
-      </div>
-      <div class="input-group">
-        <label>PLU_KOD</label>
-        <input type="text" name="plu_code" value="" required>
-      </div>
-      <div class="button input-group">
-        <input type="hidden" name="ID" value="" />
-        <input type="submit" name="add_article" class="btn" value="Dodaj novi artikal" />
-      </div>
+  <div class="container" id="main-content">
+    <div class="flex-container">
+      <form id="form" action="artikal_add.php" method="post">
+        <div class="input-group">
+          <label>Sifra</label>
+          <input type="text" name="product_code" value="" required>
+        </div>
+        <div class="input-group">
+          <label>Naziv</label>
+          <input type="text" name="product_name" value="" required>
+        </div>
+        <div class="input-group">
+          <label>JedinicaMjere</label>
+          <input type="text" name="quantity_unit" value="" required>
+        </div>
+        <div class="input-group">
+          <label>Barkod</label>
+          <input type="text" name="bar_code" value="" required>
+        </div>
+        <div class="input-group">
+          <label>PLU_KOD</label>
+          <input type="text" name="plu_code" value="" required>
+        </div>
+        <div class="button input-group">
+          <input type="hidden" name="ID" value="" />
+          <input type="submit" name="add_article" class="btn" value="Dodaj novi artikal" />
+        </div>
 
 
-    </form>
+      </form>
+    </div>
   </div>
 </body>
 

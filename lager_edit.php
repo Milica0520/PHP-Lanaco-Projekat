@@ -1,25 +1,39 @@
-<?php
+<?php include("includes/a_config.php"); ?>
+<!DOCTYPE html>
+<html>
 
-if (!isset($_COOKIE['username'])) {
-    header("Location: index.php");
-    exit();
-}
-include("connect.php");
+<head>
+    <?php include("includes/head-tag-contents.php"); ?>
+</head>
 
-$id = $_POST['ID'];
+<body>
+    <?php include("includes/design-top.php"); ?>
+   
+    <link rel="stylesheet" href="css/btns.css">
+    <div class="container" id="main-content">
 
-$rezultat = $conn->query("SELECT * FROM lager WHERE lager_id = '$id' ");
-$red = $rezultat->fetch_assoc();
-$artikal = $red['artikal_id'];
-$avq = $red['razpoloziva_kolicina'];
-$location = $red['lokacija'];
+        <?php
 
-if (isset($_POST['dodaj'])) {
-    $artikal = $_POST['artikal_id'];
-    $avq = $_POST['avq'];
-    $location = $_POST['location'];
+        if (!isset($_COOKIE['username'])) {
+            header("Location: index.php");
+            exit();
+        }
+        include("connect.php");
 
-    $sql = "UPDATE lager
+        $id = $_POST['ID'];
+
+        $rezultat = $conn->query("SELECT * FROM lager WHERE lager_id = '$id' ");
+        $red = $rezultat->fetch_assoc();
+        $artikal = $red['artikal_id'];
+        $avq = $red['razpoloziva_kolicina'];
+        $location = $red['lokacija'];
+
+        if (isset($_POST['dodaj'])) {
+            $artikal = $_POST['artikal_id'];
+            $avq = $_POST['avq'];
+            $location = $_POST['location'];
+
+            $sql = "UPDATE lager
     SET
     artikal_id ='  $artikal',
     razpoloziva_kolicina ='$avq',
@@ -27,55 +41,35 @@ if (isset($_POST['dodaj'])) {
   
     WHERE lager_id = '$id'
      ";
+            header("location:lager.php");
+        }
+        ?>
 
-    header("location:lager.php");
+        <div class="flex-container">
+            <form id="form" action="lager_edit.php" method="post">
+                <div class="input-group">
+                    <label>Naziv artikla</label>
+                    <input type="text" name="artikal_id" value="<?php echo $artikal; ?>" required>
+                </div>
+                <div class="input-group">
+                    <label>Dostupna kolicina</label>
+                    <input type="text" name="avq" value="<?php echo $avq; ?>" required>
+                </div>
+                <div class="input-group">
+                    <label>Lokacija</label>
+                    <input type="text" name="location" value="<?php echo $location; ?>" required>
+                </div>
 
-    $conn->query($sql);
+                <div class="button input-group">
+                    <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
+                    <input type="submit" name="dodaj" class="btn" value="Azuriraj lager" />
 
-}
-?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update record</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-
-    <div class="flex-container">
-        <form id="form" action="lager_edit.php" method="post">
-            <div class="input-group">
-                <label>Naziv artikla</label>
-                <input type="text" name="artikal_id" value="<?php echo $artikal ; ?>" required>
-            </div>
-            <div class="input-group">
-                <label>Dostupna kolicina</label>
-                <input type="text" name="avq" value="<?php echo $avq; ?>" required>
-            </div>
-            <div class="input-group">
-                <label>Lokacija</label>
-                <input type="text" name="location" value="<?php echo $location; ?>" required>
-            </div>
-           
-            <div class="button input-group">
-                <input type="hidden" name="ID" value="<?php echo $red['lager_id']; ?>" />
-                <input type="submit" name="dodaj" class="btn" value="Azuriraj lager" />
-
-            </div>
+                </div>
 
 
-        </form>
+            </form>
+        </div>
     </div>
-
 </body>
 
 </html>

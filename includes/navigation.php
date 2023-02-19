@@ -49,10 +49,8 @@
 		background-color: #27ae60;
 		color: #eceff1;
 	}
-	nav li a:active {
-		background-color: #27ae60;
-		color: #eceff1;
-	}
+	
+	
 
 	@media (max-width: 600px) {
 		aside {

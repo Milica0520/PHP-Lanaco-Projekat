@@ -10,56 +10,50 @@ include("connect.php");
   <?php include("includes/head-tag-contents.php"); ?>
 </head>
 
+<?php include("includes/design-top.php"); ?>
 <body>
-  <?php include("includes/design-top.php"); ?>
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add lager</title>
   
-</head>
-
-<body>
 
 
-  <div class="form-container">
-    <form id="form" action="lager_add.php" method="post">
-      <!-- SELECT OPADAJUCI MENI IZ BAZE -->
-      <?php
-      $rezultat = $conn->query("SELECT * FROM artikal");
-      $rezultat->fetch_assoc();
-      ?>
-      <div class="input-group">
-        <label for="naziv_artikla">Odaberi artikal</label>
-        <select class="input-group" name="artikal">
+  <body>
+    <div class="container" id="main-content">
+      <div class="form-container">
+        <form id="form" action="lager_add.php" method="post">
+          <!-- SELECT OPADAJUCI MENI IZ BAZE -->
           <?php
-          while ($red = $rezultat->fetch_assoc()):
-            ?>
-            <option value="<?php echo $red['artikal_id']; ?>">
-              <?php echo $red['naziv']; ?>
-            </option>
-          <?php endwhile; ?>
-        </select>
-      </div>
+          $rezultat = $conn->query("SELECT * FROM artikal");
+          $rezultat->fetch_assoc();
+          ?>
+          <div class="input-group">
+            <label for="naziv_artikla">Odaberi artikal</label>
+            <select class="input-group" name="artikal">
+              <?php
+              while ($red = $rezultat->fetch_assoc()):
+                ?>
+                <option value="<?php echo $red['artikal_id']; ?>">
+                  <?php echo $red['naziv']; ?>
+                </option>
+              <?php endwhile; ?>
+            </select>
+          </div>
 
-      <div class="input-group">
-        <label>Raspoloziva Kolicina</label>
-        <input type="text" name="avq" value="" required>
+          <div class="input-group">
+            <label>Raspoloziva Kolicina</label>
+            <input type="text" name="avq" value="" required>
+          </div>
+          <div class="input-group">
+            <label>Lokacija</label>
+            <input type="text" name="location" value="" required>
+          </div>
+          <div class="button input-group">
+            <input type="hidden" name="ID" value="" />
+            <input type="submit" name="add_lager" class="btn" value="Dodaj novi Lager" />
+          </div>
+        </form>
       </div>
-      <div class="input-group">
-        <label>Lokacija</label>
-        <input type="text" name="location" value="" required>
-      </div>
-      <div class="button input-group">
-        <input type="hidden" name="ID" value="" />
-        <input type="submit" name="add_lager" class="btn" value="Dodaj novi Lager" />
-      </div>
-    </form>
-  </div>
-</body>
+    </div>
+
+  </body>
 
 </html>
 <?php
