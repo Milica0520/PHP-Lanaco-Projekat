@@ -16,8 +16,7 @@ if (isset($_POST['username'])) {
     if($password_valid ){
       setcookie('username', $_POST['username'], time() + 3600);
       setcookie('rola', $korisnik['rola_id'], time() + 3600);
-    }
-    
+    } 
   }
 
 

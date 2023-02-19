@@ -10,7 +10,7 @@
 				<a class="nav-link <?php if ($CURRENT_PAGE == "Lager") { ?>active<?php } ?>" href="lager.php">Lager</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Racun") { ?>active<?php } ?>" href="racun.php">Racun</a>
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Racun") { ?>active<?php } ?>" href="racun_lista.php">Racun</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link <?php if ($CURRENT_PAGE == "Radnik") { ?>active<?php } ?>"

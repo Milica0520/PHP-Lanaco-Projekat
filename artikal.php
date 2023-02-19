@@ -69,7 +69,6 @@
                   <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
                   <input type="submit" class="edit-btn"  name="editID" value="Edit" />
                 </form>
-
                 <form name="delete" action="artikal_delete.php" method="post">
                   <input type="hidden" name="ID" value="<?php echo $red['artikal_id']; ?>" />
                   <input type="submit" class="delete-btn" name="delete" value="Delete" />

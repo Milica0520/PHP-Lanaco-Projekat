@@ -1,31 +1,26 @@
-<?php include("includes/a_config.php");?>
+<?php include("includes/a_config.php"); ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<?php include("includes/head-tag-contents.php");?>
-</head>
-<body>
 
-<?php include("includes/design-top.php");?>
-<?php include("includes/navigation.php");?>
-<link rel="stylesheet" href="css/btns.css">
-<div class="container" id="main-content">
-<h2>Racun</h2>
+<head>
+  <?php include("includes/head-tag-contents.php"); ?>
+</head>
+
+<body>
+  <?php include("includes/design-top.php"); ?>
+  <?php include("includes/navigation.php"); ?>
+  <link rel="stylesheet" href="css/btns.css">
+  <div class="container" id="main-content">
+    <h2>Racun</h2>
 
     <?php
-
     include("connect.php");
-
     if (!isset($_COOKIE['username'])) {
       header("Location: index.php");
     }
-
-    $rezultat = $conn->query("SELECT * FROM racun LEFT JOIN racun_stavka ON racun.racun_id = racun_stavka.racun_id");
+    $rezultat = $conn->query("SELECT * FROM racun");
     $rezultat->fetch_assoc();
     ?>
-
-
-
 
     <div class="table-container">
       <table class="table">
@@ -36,7 +31,7 @@
             <th>Br Racuna</th>
             <th>Ukupni Iznos</th>
             <th>IznosPDV</th>
-			<th>IznosBezPDV</th>
+            <th>IznosBezPDV</th>
           </tr>
         </thead>
         <?php
@@ -58,7 +53,7 @@
             <td>
               <?php echo $red['iznos_PDV']; ?>
             </td>
-			<td>
+            <td>
               <?php echo $red['iznos_bezPDV']; ?>
             </td>
           </tr>
@@ -68,15 +63,6 @@
         </tbody>
 
       </table>
-
-
-      <div class="addNewItem">
-
-        <div class="input-group">
-          <a href="racun_add_new.php">Dodaj novi racun</a>
-        </div>
-
-      </div>
       <?php
 
       if ($rezultat->num_rows == 0) {
@@ -84,11 +70,12 @@
       }
       $conn->close();
       ?>
-
-    </div>
-
-    <?php include("includes/footer.php"); ?>
-
+      <div class="addNewItem">
+        <div class="input-group">
+          <a href="racun_napravi.php">Dodaj novi racun</a>
+        </div>
+      </div>
+      <?php include("includes/footer.php"); ?>
 </body>
 
 </html>
