@@ -61,8 +61,10 @@ include("connect.php");
             <button onclick="napraviRacun()">Napravi racun</button>
         </div>
     </div>
+
+
     <script>
-        var itemList = [];
+        var itemList = [];//pravim niz/ojekat koji se sasti od podataka iz forme
         class item {
             constructor(artikal_id, quantity, price) {
                 this.artikal_id = artikal_id;
@@ -72,6 +74,7 @@ include("connect.php");
         }
 
         var itemList = [];
+        //console.log(itemList);
         read();
 
         function read() {//create funkcija pravi tabelu
@@ -106,7 +109,7 @@ include("connect.php");
 
         function del(index) {//brisanje
             itemList.splice(index, 1)
-            read()
+            read();
         }
 
         function napraviRacun() {

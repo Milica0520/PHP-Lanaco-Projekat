@@ -1,35 +1,40 @@
-<aside>
-	<nav>
-		<ul>
+
+	<div class="container">
+		
+	<ul class="nav nav-pills">
 			
-			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Artikal") { ?>active<?php } ?>"
+			<li>
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Artikal") { ?>hover<?php } ?>"
 					href="artikal.php">Artikal</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Lager") { ?>active<?php } ?>" href="lager.php">Lager</a>
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Lager") { ?>hover<?php } ?>" href="lager.php">Lager</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Racun") { ?>active<?php } ?>" href="racun_lista.php">Racun</a>
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Racun") { ?>hover<?php } ?>" href="racun_lista.php">Racun</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Radnik") { ?>active<?php } ?>"
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Radnik") { ?>hover<?php } ?>"
 					href="radnik.php">Radnik</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Logout") { ?>active<?php } ?>"
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Logout") { ?>hover<?php } ?>"
 					href="logout.php">Logout</a>
 			</li>
 		</ul>
 		</div>
-</aside>
+
 <style>
-	aside {
-		width: 200px;
-		background-color: lightgray;
-		position: fixed;
-		height: 100%;
-	}
+.nav{
+	display: flex;
+  justify-content: start ;
+  align-items: center;
+  padding: 20px;
+  /* background-color: #3498db; */
+  color: whit
+}
+	
+	
 
 	nav ul {
 		list-style: none;
@@ -38,25 +43,19 @@
 		text-align: center;
 	}
 
-	nav li a {
+	.nav-link {
 		display: block;
 		padding: 10px;
 		text-decoration: none;
 		color: black;
 	}
 
-	nav li a:hover {
+	.nav-link:hover {
 		background-color: #27ae60;
-		color: #eceff1;
+		color: white;
 	}
 	
 	
 
-	@media (max-width: 600px) {
-		aside {
-			position: static;
-			width: 100%;
-			height: auto;
-		}
-	}
+
 </style>
