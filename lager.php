@@ -31,7 +31,10 @@ if (!isset($_COOKIE['username'])) {
           <th>Artikal ID</th>
           <th>Raspoloziva Kolicina</th>
           <th>Lokacija</th>
+          <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
           <th colspan="2">Akcije</th>
+          <?php
+              } ?>
         </tr>
       </thead>
       <?php
@@ -68,6 +71,7 @@ if (!isset($_COOKIE['username'])) {
     }
     $conn->close();
     ?>
+     <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
  <div class="addNewItem">
     <form action="lager_add.php" method="post">
       <div class="input-group">
@@ -75,7 +79,8 @@ if (!isset($_COOKIE['username'])) {
       </div>
     </form>
   </div>
-
+  <?php
+              } ?>
 <?php include("includes/footer.php");?>
 
 </body>

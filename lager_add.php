@@ -45,6 +45,7 @@ include("connect.php");
             <label>Lokacija</label>
             <input type="text" name="location" value="" required>
           </div>
+          
           <div class="button input-group">
             <input type="hidden" name="ID" value="" />
             <input type="submit" name="add_lager" class="btn" value="Dodaj novi Lager" />

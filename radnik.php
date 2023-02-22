@@ -23,7 +23,7 @@
     }
 
     $rezultat = $conn->query("SELECT * FROM radnik LEFT JOIN korisnik ON radnik.korisnik_id = korisnik.korisnik_id");
-    $rezultat->fetch_assoc();
+    //$rezultat->fetch_assoc();visak
     ?>
 
 

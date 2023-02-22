@@ -81,7 +81,7 @@
 
       </table>
 
-
+      <?php if (isset($_COOKIE['rola']) && $_COOKIE['rola'] == 1) { ?>
       <div class="addNewItem">
 
         <div class="input-group">
@@ -89,6 +89,8 @@
         </div>
 
       </div>
+      <?php
+              } ?>
       <?php
 
       if ($rezultat->num_rows == 0) {

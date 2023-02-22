@@ -14,6 +14,7 @@ include("connect.php");
 <body>
     <?php include("includes/design-top.php"); ?>
     <?php include("includes/navigation.php"); ?>
+ 
     <div class="container" id="main-content">
         <h2>Dodaj stavke</h2>
         <div class="table-container">
@@ -29,7 +30,7 @@ include("connect.php");
 
         </div>
         <div class="form-container">
-            <form id="form">
+            <form id="form" method="POST">
                 <?php
                 $rezultat = $conn->query("SELECT * FROM artikal");
                 $rezultat->fetch_assoc();
@@ -47,23 +48,29 @@ include("connect.php");
                     </select>
                 </div>
                 <div class="input-group">
-                    <input type="number" id="quantity" required placeholder="Kolicina">
+                    <input type="number" name="quantity" id="quantity" required placeholder="Kolicina">
                 </div>
                 <div class="input-group">
-                    <input type="number" id="price" required placeholder="Cijena">
+                    <input type="number" name="price" id="price" required placeholder="Cijena">
                 </div>
+            
                 <div class="input-group">
-                    <input type="button" onclick="create()" id="submit" value="DODAJ">
+                    <input type="button" name="add_item" onclick="create()" id="submit" value="DODAJ">
                 </div>
+       
             </form>
         </div>
         <div>
             <button onclick="napraviRacun()">Napravi racun</button>
         </div>
+
     </div>
 
 
+
+
     <script>
+           
         var itemList = [];//pravim niz/ojekat koji se sasti od podataka iz forme
         class item {
             constructor(artikal_id, quantity, price) {
@@ -74,7 +81,7 @@ include("connect.php");
         }
 
         var itemList = [];
-        //console.log(itemList);
+        console.log(itemList);
         read();
 
         function read() {//create funkcija pravi tabelu
@@ -88,7 +95,7 @@ include("connect.php");
                     + "<td><button onclick='del(" + i + ")'>X</button></td></tr>";
             }
         }
-
+      
         function create() {//ova funkcija ubaci novi element u niz, sortira i ispise u tabeli
 
             var newArtikal_id = artikal_id.value;//fname je getelementbyid("fname")
